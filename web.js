@@ -3,11 +3,11 @@ var fs = require('fs');
 
 var app = express.createServer(express.logger());
 var content = new Buffer(256);
-fs.readFile('index.html');
+content = fs.readFileSync('index.html');
 
 app.get('/', function(request, response) {
   response.send('Hello World! by Sid');
-  //response.send(content);
+  response.send(content.toString());;
 });
 
 var port = process.env.PORT || 5000;
